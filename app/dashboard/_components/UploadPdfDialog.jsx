@@ -81,7 +81,7 @@ function UploadPdfDialog({children, isMaxFile}) {
     return (
     
         <Dialog open = {open}>
-            <DialogTrigger className={`w-full }`}    >
+            <DialogTrigger asChild className="w-full">
                 <Button className='w-full bg-black rounded text-white shadow-zinc-500  shadow-sm hover:text-black hover:border-[1px] hover:border-black ' onClick={()=>setOpen(true)} disabled={isMaxFile}> + Upload PDF</Button>
             </DialogTrigger>
                 <DialogContent>
