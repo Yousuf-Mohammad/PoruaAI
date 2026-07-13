@@ -1,16 +1,35 @@
-"use client"
-import { UserButton } from '@clerk/nextjs'
-import Image from 'next/image'
-import React from 'react'
+"use client";
+import { UserButton } from "@clerk/nextjs";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import React from "react";
+import Wordmark from "@/components/Wordmark";
 
-function WorkspaceHeader({fileName}) {
-    return (
-    <div className='flex justify-between items-center m-4 shadow-md'>
-        <Image src="/ai.png" alt="Vercel Logo" width={100} height={100} className='p-4 m-2 ' />
-        <h1 className='text-xl font-bold '>{`Name of Your PDF file: ${fileName}`}</h1>
-        <UserButton />
-    </div>
-    )
+function WorkspaceHeader({ fileName }) {
+  return (
+    <header className="flex h-16 shrink-0 items-center justify-between gap-4 border-b border-rule bg-page px-5">
+      <div className="flex min-w-0 items-center gap-4">
+        <Link
+          href="/dashboard"
+          aria-label="Back to documents"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-ink-soft transition-colors hover:bg-paper hover:text-ink"
+        >
+          <ArrowLeft className="h-4 w-4" strokeWidth={1.75} />
+        </Link>
+        <span className="hidden sm:block">
+          <Wordmark />
+        </span>
+        <span aria-hidden className="hidden h-5 w-px bg-rule sm:block" />
+        <h1 className="truncate font-display text-[17px] font-medium tracking-tight">
+          {fileName ?? "Loading…"}
+        </h1>
+      </div>
+
+      <UserButton
+        appearance={{ elements: { avatarBox: "h-8 w-8 ring-1 ring-rule" } }}
+      />
+    </header>
+  );
 }
 
-export default WorkspaceHeader
+export default WorkspaceHeader;

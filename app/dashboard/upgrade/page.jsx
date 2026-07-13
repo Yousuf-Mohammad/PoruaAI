@@ -1,191 +1,108 @@
-import Link from 'next/link'
-import React from 'react'
+import React from "react";
+import { Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const plans = [
+  {
+    name: "Starter",
+    price: "Free",
+    cadence: "",
+    blurb: "Enough to read a semester's worth of papers.",
+    features: [
+      "Up to 5 documents",
+      "Unlimited questions",
+      "Notes saved per document",
+      "Help centre access",
+    ],
+    cta: "Your current plan",
+    current: true,
+  },
+  {
+    name: "Pro",
+    price: "$9.99",
+    cadence: "/month",
+    blurb: "For readers whose shelf keeps growing.",
+    features: [
+      "Unlimited documents",
+      "Unlimited questions",
+      "Notes saved per document",
+      "Email and phone support",
+    ],
+    cta: "Upgrade to Pro",
+    current: false,
+  },
+];
 
 const UpgradePlans = () => {
   return (
-    <div className=' flex flex-col items-center justify-center'>
-      <h1 className='text-2xl font-extrabold'>Upgrade Plans</h1>
-      <p>upgrade your plans to upload more PDF files and get more features</p>
-
-
-      <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:items-center md:gap-8">
-            <div
-                className="rounded-2xl border  p-6 shadow-sm ring-1  sm:order-last sm:px-8 lg:p-12">
-                  <div className="text-center">
-                          <h2 className="text-lg font-medium text-gray-900">
-                              Pro
-                          <span className="sr-only">Plan</span>
-                          </h2>
-
-                          <p className="mt-2 sm:mt-4">
-                              <strong className="text-3xl font-bold text-gray-900 sm:text-4xl"> 9.99$ </strong>
-
-                            <span className="text-sm font-medium text-gray-700">/month</span>
-                          </p>
-                    </div>
-
-      <ul className="mt-6 space-y-2">
-        <li className="flex items-center gap-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="size-5 text-indigo-700"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-          </svg>
-
-          <span className="text-gray-700"> Unlimited PDF files </span>
-        </li>
-
-       
-
-       
-
-        <li className="flex items-center gap-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="size-5 text-indigo-700"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-          </svg>
-
-          <span className="text-gray-700"> Unlimited note and AI chat </span>
-        </li>
-
-        <li className="flex items-center gap-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="size-5 text-indigo-700"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-          </svg>
-
-          <span className="text-gray-700"> Email & Phone support </span>
-        </li>
-
-        <li className="flex items-center gap-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="size-5 text-indigo-700"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-          </svg>
-
-          <span className="text-gray-700"> Community access </span>
-        </li>
-      </ul>
-
-      <Link
-        href="#"
-        className="mt-8 block rounded-full border border-indigo-600 bg-white px-12 py-3 text-center text-sm font-medium text-black hover:bg-indigo-500 hover:ring-1 hover:ring-indigo-500 hover:text-white focus:outline-none focus:ring active:text-indigo-500"
-      >
-        Get Started
-      </Link>
-    </div>
-
-    <div className="rounded-2xl border border-gray-200 p-6 shadow-sm sm:px-8 lg:p-12">
-      <div className="text-center">
-        <h2 className="text-lg font-medium text-gray-900">
-          Starter
-          <span className="sr-only">Plan</span>
-        </h2>
-
-        <p className="mt-2 sm:mt-4">
-          <strong className="text-3xl font-bold text-gray-900 sm:text-4xl">Free </strong>
-
-          <span className="text-sm font-medium text-gray-700"></span>
+    <div className="mx-auto max-w-4xl">
+      <div>
+        <p className="eyebrow">Plans</p>
+        <h1 className="mt-2 font-display text-3xl font-medium tracking-tight">
+          Room for more documents
+        </h1>
+        <p className="mt-3 max-w-md text-[15px] leading-relaxed text-ink-soft">
+          The free plan holds five. Upgrade when your shelf runs out of room.
         </p>
       </div>
 
-      <ul className="mt-6 space-y-2">
-        <li className="flex items-center gap-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="size-5 text-indigo-700"
+      <div className="mt-12 grid gap-5 md:grid-cols-2">
+        {plans.map((plan) => (
+          <div
+            key={plan.name}
+            className="flex flex-col rounded-xl border border-rule bg-page p-8 shadow-page"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-          </svg>
+            <div className="flex items-baseline justify-between">
+              <h2 className="font-display text-xl font-medium">{plan.name}</h2>
+              {plan.current && <span className="eyebrow">Current</span>}
+            </div>
 
-          <span className="text-gray-700">Upload upto 5 PDF files </span>
-        </li>
+            <p className="mt-5 flex items-baseline gap-1">
+              <span
+                className={
+                  plan.current
+                    ? "font-display text-4xl font-medium tracking-tight"
+                    : "mark font-display text-4xl font-medium tracking-tight"
+                }
+              >
+                {plan.price}
+              </span>
+              <span className="font-mono text-[11px] uppercase tracking-label text-ink-soft">
+                {plan.cadence}
+              </span>
+            </p>
 
-        <li className="flex items-center gap-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="size-5 text-indigo-700"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-          </svg>
+            <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">
+              {plan.blurb}
+            </p>
 
-          <span className="text-gray-700"> Unlimited AI chat </span>
-        </li>
+            <ul className="mt-8 space-y-3 border-t border-rule pt-6">
+              {plan.features.map((feature) => (
+                <li key={feature} className="flex items-start gap-2.5 text-[15px]">
+                  <Check
+                    className="mt-1 h-3.5 w-3.5 shrink-0 text-ink-soft"
+                    strokeWidth={2.5}
+                    aria-hidden
+                  />
+                  {feature}
+                </li>
+              ))}
+            </ul>
 
-        <li className="flex items-center gap-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="size-5 text-indigo-700"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-          </svg>
-
-          <span className="text-gray-700"> Email support </span>
-        </li>
-
-        <li className="flex items-center gap-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="size-5 text-indigo-700"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-          </svg>
-
-          <span className="text-gray-700"> Help center access </span>
-        </li>
-      </ul>
-
-      <a
-        href="#"
-        className="mt-8 block rounded-full border border-indigo-600 bg-white px-12 py-3 text-center text-sm font-medium text-black hover:bg-indigo-500 hover:ring-1 hover:ring-indigo-500 hover:text-white focus:outline-none focus:ring active:text-indigo-500"
-      >
-        Get Started
-      </a>
+            <div className="mt-auto pt-8">
+              <Button
+                className="w-full"
+                variant={plan.current ? "secondary" : "default"}
+                disabled={plan.current}
+              >
+                {plan.cta}
+              </Button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
-</div>
-    </div>
-  )
-}
+  );
+};
 
-export default UpgradePlans
+export default UpgradePlans;
