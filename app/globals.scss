@@ -4,7 +4,11 @@
 
 @layer base {
   :root {
-    /* Marginalia palette — paper, ink, one marker. */
+    color-scheme: light;
+
+    /* Marginalia palette. The names are roles, not values: `paper` is the
+       ground and `ink` is what you write on it with, whichever way the lights
+       are set. */
     --paper: 75 10% 93%;
     --page: 60 16% 96%;
     --ink: 210 8% 9%;
@@ -13,6 +17,16 @@
     --marker: 54 86% 62%;
     --marker-deep: 51 76% 50%;
     --flag: 5 47% 44%;
+
+    /* A highlighter's pigment doesn't change when the lights go down, and
+       neither does the fact that you read it as dark-on-yellow. This one stays
+       put in both themes — it is what keeps marked text legible after the
+       inversion. */
+    --on-marker: 210 8% 9%;
+
+    /* Shadows are cast by the dark, not by the ink — kept separate so they
+       don't invert into a white glow when the theme flips. */
+    --shadow: 210 8% 9%;
 
     /* shadcn token layer, mapped onto the palette above. */
     --background: var(--paper);
@@ -36,6 +50,31 @@
     --ring: var(--ink);
 
     --radius: 0.5rem;
+  }
+
+  /* Lamp off. The ground darkens and the ink lightens, but the marker keeps its
+     pigment — so a marked passage still reads dark-on-yellow, the same way it
+     would on the page. */
+  .dark {
+    color-scheme: dark;
+
+    --paper: 200 7% 11%;
+    --page: 200 7% 15%;
+    --ink: 60 12% 92%;
+    --ink-soft: 200 6% 62%;
+    --rule: 200 6% 26%;
+    --marker: 54 86% 62%;
+    --marker-deep: 51 76% 55%;
+    --flag: 5 65% 60%;
+    --shadow: 0 0% 0%;
+
+    --secondary: 200 7% 19%;
+    --secondary-foreground: var(--ink);
+    --muted: 200 7% 19%;
+    --muted-foreground: var(--ink-soft);
+    --accent: 200 7% 19%;
+    --accent-foreground: var(--ink);
+    --ring: var(--ink);
   }
 
   * {
@@ -64,6 +103,7 @@
   .mark {
     position: relative;
     isolation: isolate;
+    color: hsl(var(--on-marker));
   }
 
   .mark::before {
@@ -171,7 +211,7 @@
 
   mark {
     background: hsl(var(--marker));
-    color: hsl(var(--ink));
+    color: hsl(var(--on-marker));
     padding: 0.05em 0.15em;
     border-radius: 2px 5px 3px 6px;
     box-decoration-break: clone;

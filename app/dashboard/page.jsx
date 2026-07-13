@@ -31,7 +31,7 @@ const DocumentCard = ({ file }) => (
       ))}
     </span>
 
-    <h2 className="mark-block mark-group self-start rounded px-1 font-display text-[17px] font-medium leading-snug text-ink">
+    <h2 className="mark-block mark-group self-start rounded px-1 font-display text-[17px] font-medium leading-snug text-ink transition-colors group-hover:text-on-marker">
       {file.fileName}
     </h2>
     <p className="mt-2 px-1 font-mono text-[11px] uppercase tracking-label text-ink-soft">

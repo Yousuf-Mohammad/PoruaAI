@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import React from "react";
 import Wordmark from "@/components/Wordmark";
+import ThemeToggle from "@/components/ThemeToggle";
 
 function WorkspaceHeader({ fileName }) {
   return (
@@ -25,9 +26,12 @@ function WorkspaceHeader({ fileName }) {
         </h1>
       </div>
 
-      <UserButton
-        appearance={{ elements: { avatarBox: "h-8 w-8 ring-1 ring-rule" } }}
-      />
+      <div className="flex shrink-0 items-center gap-3">
+        <ThemeToggle />
+        <UserButton
+          appearance={{ elements: { avatarBox: "h-8 w-8 ring-1 ring-rule" } }}
+        />
+      </div>
     </header>
   );
 }

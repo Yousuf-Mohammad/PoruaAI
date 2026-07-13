@@ -6,6 +6,7 @@ import { useUser } from "@clerk/nextjs";
 import { useMutation } from "convex/react";
 import Link from "next/link";
 import Wordmark from "@/components/Wordmark";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const steps = [
   {
@@ -54,12 +55,15 @@ export default function Home() {
     <div className="min-h-screen bg-paper text-ink">
       <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
         <Wordmark />
-        <Link
-          href={destination}
-          className="font-mono text-[11px] uppercase tracking-label text-ink-soft transition-colors hover:text-ink"
-        >
-          Sign in
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link
+            href={destination}
+            className="font-mono text-[11px] uppercase tracking-label text-ink-soft transition-colors hover:text-ink"
+          >
+            Sign in
+          </Link>
+          <ThemeToggle />
+        </div>
       </header>
 
       <main className="mx-auto max-w-6xl px-6 pb-24">

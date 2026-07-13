@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import Wordmark from "@/components/Wordmark";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const nav = [
   { href: "/dashboard", label: "Documents" },
@@ -26,7 +27,7 @@ const Header = () => {
               href={href}
               aria-current={path === href ? "page" : undefined}
               data-marked={path === href}
-              className="mark-block mark-hover rounded px-1.5 py-0.5 text-[13px] text-ink-soft data-[marked=true]:text-ink"
+              className="mark-block mark-hover rounded px-1.5 py-0.5 text-[13px] text-ink-soft transition-colors hover:text-on-marker data-[marked=true]:text-on-marker"
             >
               {label}
             </Link>
@@ -34,9 +35,12 @@ const Header = () => {
         </nav>
       </div>
 
-      <UserButton
-        appearance={{ elements: { avatarBox: "h-8 w-8 ring-1 ring-rule" } }}
-      />
+      <div className="flex items-center gap-3">
+        <ThemeToggle />
+        <UserButton
+          appearance={{ elements: { avatarBox: "h-8 w-8 ring-1 ring-rule" } }}
+        />
+      </div>
     </header>
   );
 };

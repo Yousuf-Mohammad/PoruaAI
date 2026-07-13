@@ -20,6 +20,8 @@ export default {
           DEFAULT: "hsl(var(--marker))",
           deep: "hsl(var(--marker-deep))",
         },
+        "on-marker": "hsl(var(--on-marker))",
+        scrim: "hsl(var(--shadow))",
         flag: "hsl(var(--flag))",
 
         background: "hsl(var(--background))",
@@ -70,8 +72,8 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        page: "0 1px 2px hsl(var(--ink) / 0.04), 0 8px 24px -12px hsl(var(--ink) / 0.10)",
-        lift: "0 2px 4px hsl(var(--ink) / 0.05), 0 16px 32px -16px hsl(var(--ink) / 0.18)",
+        page: "0 1px 2px hsl(var(--shadow) / 0.04), 0 8px 24px -12px hsl(var(--shadow) / 0.10)",
+        lift: "0 2px 4px hsl(var(--shadow) / 0.05), 0 16px 32px -16px hsl(var(--shadow) / 0.18)",
       },
       keyframes: {
         swipe: {

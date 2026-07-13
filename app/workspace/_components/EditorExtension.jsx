@@ -40,7 +40,7 @@ const ToolButton = ({ active, label, onClick, disabled, children }) => (
     className={cn(
       "mark-block flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-ink-soft transition-colors",
       "hover:bg-paper hover:text-ink disabled:pointer-events-none disabled:opacity-35",
-      "data-[marked=true]:text-ink data-[marked=true]:hover:bg-transparent"
+      "data-[marked=true]:text-on-marker data-[marked=true]:hover:bg-transparent"
     )}
   >
     {children}
