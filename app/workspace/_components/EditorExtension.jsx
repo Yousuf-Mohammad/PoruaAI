@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import React, { useState } from "react";
 import { useParams } from "next/navigation";
-import { chatSession } from "@/configs/AIMODEL";
+import { askGemini, ModelOverloadedError } from "@/configs/AIMODEL";
 import { toast } from "sonner";
 import { useUser } from "@clerk/nextjs";
 import { cn } from "@/lib/utils";
@@ -102,8 +102,7 @@ const EditorExtension = ({ editor }) => {
 
       const PROMPT = `For question: ${selectedText} and the answer is given ${context}   please give appropriate answer in HTML format. complete the answer if it is not completed in the given answer within 80 words.`;
 
-      const AiModelResult = await chatSession.sendMessage(PROMPT);
-      const answer = stripCodeFence(AiModelResult.response.text());
+      const answer = stripCodeFence(await askGemini(PROMPT));
 
       // Porua's writing is set apart from yours — ruled off, labelled, in the
       // machine's own voice rather than blended into your notes.
@@ -115,10 +114,21 @@ const EditorExtension = ({ editor }) => {
       toast.success("Answer added to your notes.", { id: reading });
     } catch (error) {
       console.error("Ask Porua failed:", error);
-      toast.error("Porua couldn't answer that one.", {
-        id: reading,
-        description: "Try again, or highlight a shorter passage.",
-      });
+
+      // Google shedding load is not the reader's fault, and not something a
+      // shorter passage would fix — so don't tell them to try one.
+      if (error instanceof ModelOverloadedError) {
+        toast.error("Gemini is busy right now.", {
+          id: reading,
+          description:
+            "Google is turning requests away. Your notes are untouched — ask again in a moment.",
+        });
+      } else {
+        toast.error("Porua couldn't answer that one.", {
+          id: reading,
+          description: "Try again, or highlight a shorter passage.",
+        });
+      }
     } finally {
       setAsking(false);
     }
