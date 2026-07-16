@@ -15,7 +15,7 @@ Google Gemini and can be saved as notes.
   the retrieved passages.
 - 📝 **Rich text editor** — a TipTap-based editor with formatting, headings,
   lists, alignment, and highlighting.
-- 💾 **Notes** — save the editor contents per file.
+- 💾 **Notes** — save the editor contents per file. (Need to update the note writing way to notion style interface)
 - 🔐 **Authentication** — user sign-in/sign-up handled by Clerk.
 
 ## Tech Stack
